@@ -1,15 +1,15 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: system-ui, -apple-system, sans-serif;
+    box-sizing: border-box;/* Makes sure padding and border are included in element's total width and height */
+    font-family: system-ui, -apple-system, sans-serif; /* Sets a modern system font */
 }
 
 html,
 body {
     height: 100%;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+    scroll-behavior: smooth; /* Enables smooth scrolling when jumping to anchor links */
 
 }
 
@@ -20,6 +20,7 @@ nav {
     justify-content: flex-end;
     background-color: white;
     padding: 10px;
+    position: relative;
 }
 
 nav ul {
@@ -48,10 +49,35 @@ nav li a {
     border-radius: 5px;
 }
 
+.menu-icon {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
-    nav {
-        flex-direction: column;
+    .menu-icon {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 10px;
+    }
+
+    .nav-links {
+        display: none;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        padding: 10px 0;
+    }
+
+    .nav-links.active {
+        display: block;
     }
 
     nav ul {
@@ -59,7 +85,24 @@ nav li a {
     }
 
     nav li {
-        margin-bottom: 10px;
+        margin: 0;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+    }
+
+    nav li:last-child {
+        border-bottom: none;
+    }
+
+    nav li a {
+        display: block;
+        padding: 15px 20px;
+    }
+
+    .sign-in {
+        background: none;
+        color: #0096FF;
+        padding: 15px 20px;
     }
 }
 
@@ -81,7 +124,7 @@ nav li a {
         /* Downward arrow emoji */
     }
 }
-
+/* Adds an arrow after the link */
 .back-link::after {
     font-size: 24px;
     /* Adjust the size as needed */
@@ -92,7 +135,7 @@ nav li a {
     display: flex;
     gap: 1rem;
 }
-
+/* Property actions buttons */
 .action-btn {
     padding: 0.5rem 1rem;
     border: 1px solid #ddd;
@@ -112,15 +155,15 @@ nav li a {
 }
 
 .details-left {
-    flex: 2;
+    flex: 2;  /* Makes the left section take 2/3 of the space */
 }
 
 .details-right {
-    flex: 1;
+    flex: 1; /* Makes the right section take 1/3 of the space */
 }
 
 .property-title {
-    font-size: 1.8rem;
+    font-size: 1.8rem; /* Larger title size */
     margin-bottom: 1rem;
 }
 
@@ -135,7 +178,7 @@ nav li a {
     background: #006647;
     color: white;
     padding: 0.2rem 0.5rem;
-    border-radius: 4px;
+    border-radius: 4px;  /* Rounded corners */
 }
 
 /* Booking Card */
@@ -143,10 +186,10 @@ nav li a {
     border: 1px solid #ddd;
     border-radius: 12px;
     padding: 1.5rem;
-    position: sticky;
-    top: 2rem;
+    position: sticky; /* Keeps it fixed when scrolling */
+    top: 2rem; /* Makes it stick 2rem from the top */
     background: white;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1); /* Adds shadow */
 }
 
 .price {
@@ -224,7 +267,7 @@ nav li a {
 /* Amenities */
 .amenities-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* Two-column grid */
     gap: 1rem;
     margin-top: 1rem;
 }
@@ -238,11 +281,11 @@ nav li a {
 /* Responsive Design */
 @media (max-width: 768px) {
     .property-details {
-        flex-direction: column;
+        flex-direction: column; /* Stacks the property details on small screens */
     }
 
     .booking-card {
-        position: static;
+        position: static; /* Removes sticky position on small screens */
         margin-top: 1rem;
     }
 
@@ -251,19 +294,19 @@ nav li a {
     }
 
     .nav-left {
-        display: none;
+        display: none; /* Hides left part of the navbar on small screens */
     }
 
     .actions {
-        float: none;
+        float: none; /* Removes float property */
         margin-top: 1rem;
     }
 
     .amenities-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr;/* Single column grid on small screens */
     }
 }
-
+/* General Body Styling */
 body {
     padding: clamp(10px, 2vw, 20px);
     color: #333;
@@ -274,7 +317,7 @@ body {
 
 .element-class {
     max-width: 1200px;
-    width: 100%;
+    width: 100%; /* Full width up to 1200px */
 }
 
 
@@ -299,6 +342,7 @@ body {
     overflow: hidden;
 }
 
+/* Gallery Grid */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -327,12 +371,10 @@ body {
     object-fit: cover;
     display: block;
     border-radius: 8px;
-    /* Added subtle rounded corners */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    /* Added subtle shadow */
 }
 
-/* Assign grid areas to specific items */
+/* Grid area assignments */
 .gallery-item:nth-child(1) {
     grid-area: main;
 }
@@ -357,62 +399,73 @@ body {
     grid-area: bottom-right;
 }
 
-/* Hover effect */
-.gallery-item img:hover {
-    transform: scale(1.02);
-    transition: transform 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+/* Hover effects for desktop */
+@media (min-width: 769px) {
+    .gallery-item img:hover {
+        transform: scale(1.02);
+        transition: transform 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
 }
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
     .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-areas:
-            "main main"
-            "top-right middle-right"
-            "bottom-left bottom-middle"
-            "bottom-right bottom-right";
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .gallery-grid {
         grid-template-columns: 1fr;
         grid-template-areas:
             "main"
-            "top-right"
-            "middle-right"
-            "bottom-left"
-            "bottom-middle"
-            "bottom-right";
-        grid-gap: 15px;
-        /* Increased gap for mobile */
+            "top-right";
+        grid-gap: 10px;
+        width: 100%;
+        padding: 10px;
+    }
+
+    /* Show only first two images */
+    .gallery-item:nth-child(1),
+    .gallery-item:nth-child(2) {
+        display: block;
+    }
+
+    /* Hide all other images */
+    .gallery-item:nth-child(n+3) {
+        display: none;
+    }
+
+    /* Adjust aspect ratio for mobile */
+    .gallery-item {
+        aspect-ratio: 4/3;
+    }
+
+    /* Remove hover effects on mobile */
+    .gallery-item img:hover {
+        transform: none;
+        box-shadow: none;
     }
 }
-
-/* Navigation Tabs */
+/* Navigation Tabs Styling */
 .nav-tabs {
     display: flex;
-    gap: 10px;
+    gap: 10px; /* Space between each tab */
     margin-bottom: 20px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ddd; /* Bottom border for tab separation */
     padding-bottom: 10px;
-    overflow-x: auto;
+    overflow-x: auto; /* Enables horizontal scrolling if tabs overflow */
 
 }
 
 /* Main Content Layout */
 .main-content {
-    display: grid;
+    display: grid; /* Using grid layout for main content */
     grid-template-columns: 1fr;
     gap: 20px;
 }
+/* Responsive layout for larger screens */
 
 @media (min-width: 1024px) {
+    
     .main-content {
-        grid-template-columns: 2fr 1fr;
-        gap: 40px;
+        grid-template-columns: 2fr 1fr; /* Two columns layout */
+        gap: 40px; /* Larger gap between the columns */
     }
 }
 
@@ -420,24 +473,24 @@ body {
 .booking-card {
     background: white;
     border: 1px solid #ddd;
-    border-radius: 12px;
-    padding: 20px;
+    border-radius: 12px; /* Rounded corners */
+    padding: 20px; /* Inner padding */
     margin-bottom: 20px;
-    width: 100%;
+    width: 100%; /* Full width */
     max-width: 400px;
     /* Add maximum width for larger screens */
 }
 
 @media (min-width: 1024px) {
     .booking-card {
-        position: sticky;
-        top: 20px;
-        margin-bottom: 0;
+        position: sticky; /* Make the card sticky when scrolling */
+        top: 20px; /* Stick 20px from the top of the container */
+        margin-bottom: 0; /* Remove bottom margin */
         /* Prevent layout shifts */
-        transform: translateZ(0);
-        will-change: transform;
+        transform: translateZ(0); /* Ensure proper positioning */
+        will-change: transform; /* Optimizing the sticky behavior */
         /* Ensure the card stays within its container */
-        align-self: start;
+        align-self: start; /* Align the card at the start of its container */
     }
 }
 
@@ -469,15 +522,15 @@ body {
     border: none;
     border-radius: 8px;
     font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.2s;
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.2s; /* Smooth transition on hover */
 }
 
 .book-button:hover {
     background: #0052cc;
 }
 
-/* Additional Info Text */
+/* Small text for additional info */
 .small {
     font-size: 14px;
     color: #666;
@@ -494,12 +547,13 @@ body {
     text-align: center;
     font-size: 14px;
 } */
+ /* Banner styling (commented out member banner) */
 .banner {
     background-color: #4a4a4a;
     color: #fff;
     padding: 20px;
-    display: flex;
-    align-items: center;
+    display: flex; /* Flex layout for banner items */
+    align-items: center; /* Center items vertically */
     border-radius: 10px;
     margin: 5px 0;
     width: 100%;
@@ -509,7 +563,7 @@ body {
 }
 
 .banner-content {
-    flex-grow: 1;
+    flex-grow: 1; /* Allow content to expand */
     padding-right: 20px;
 }
 
@@ -542,7 +596,7 @@ body {
 @media (min-width: 1024px) {
     .right-column {
         /* Ensure proper containing block for sticky positioning */
-        display: block;
+        display: block;/* Ensure proper containing block for sticky positioning */
         position: relative;
     }
 }
