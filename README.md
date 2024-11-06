@@ -112,6 +112,7 @@ Here’s a breakdown of the main CSS classes in styles.css:
     .point-info: Provides style for additional information, such as travel time and distance.
 
     .point-note: Additional notes or details, usually displayed at the bottom of a section.
+I add comments in my CSS code to clarify the structure and explain specific styles, making it easier to maintain and understand.
 ## Responsive Design
 The design includes media queries to ensure optimal layout across different devices:
 
